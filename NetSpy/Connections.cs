@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,19 +15,23 @@ namespace NetSpy
 {
     public partial class Connections : Form
     {
-        public ConnectionHelper ConnectionHelper;
+        public ConnectionHelper connectionHelper;
         public Random rnd;
 
         public Connections()
         {
             InitializeComponent();
-            ConnectionHelper = new ConnectionHelper();
+            connectionHelper = new ConnectionHelper();
+            connectionHelper.VictimIp = IPAddress.Parse("127.0.0.1");
+            connectionHelper.VictimPort = 1236;
+
             rnd = new Random();
         }
 
         private void Connections_Load(object sender, EventArgs e)
         {
-            ConnectionHelper.TryPreparePackets();
+            connectionHelper.TryPreparePackets();
+            connectionHelper.SendData(new byte[100]);
         }
 
         public void SendFakePacket(int length)
@@ -43,7 +48,9 @@ namespace NetSpy
             return rnd.Next(min, max);
         }
 
-
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            connectionHelper.SendData(connectionHelper.BuildRandomPackets(100 * 100));
+        }
     }
 }

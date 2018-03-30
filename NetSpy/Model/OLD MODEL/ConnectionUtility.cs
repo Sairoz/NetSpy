@@ -122,22 +122,24 @@ namespace NetSpy.Model
             return response;
         }
 
-        public bool isFloat(float number)
+        public bool IsFloat(float number)
         {
-            if (number == (int) number)
+            if (number != (int)number)
             {
-                return false;
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
 
         public byte[][] PreparePackets(byte[] data,int buffer)
         {
+
             //TODO: NON FUNZIONA CORRETTAMENTE, IL PRIMO BYTE È GIUSTO ED IL RESTO È A 0 -> USARE DEBUGGER
-            int packetsNumber = isFloat((float)data.Length/buffer)? (int) data.Length / buffer + 1 :  data.Length / buffer;
+
+            int packetsNumber = IsFloat((float)data.Length/buffer)? (int) data.Length / buffer + 1 :  data.Length / buffer;
 
             byte[][] packets = new byte[packetsNumber][];
             

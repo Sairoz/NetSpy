@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetSpy.Helper
+namespace InfectedApplication.Helper
 {
     public static class NumbersHelper
     {

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{82310127-C9F0-4E8D-A4E6-36016DAF023D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>NetSpy</RootNamespace>
-    <AssemblyName>NetSpy</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <ProjectGuid>{3408A01D-37DD-4A53-9C4A-F110D824FDCF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>InfectedApplication</RootNamespace>
+    <AssemblyName>InfectedApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
@@ -31,9 +31,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,24 +45,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connections.cs">
+    <Compile Include="Helper\NumbersHelper.cs" />
+    <Compile Include="Helper\VictimConnectionHelper.cs" />
+    <Compile Include="Helper\VictimSpyHelper.cs" />
+    <Compile Include="Victim.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Connections.Designer.cs">
-      <DependentUpon>Connections.cs</DependentUpon>
+    <Compile Include="Victim.Designer.cs">
+      <DependentUpon>Victim.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helper\ConnectionHelper.cs" />
-    <Compile Include="Helper\NumbersHelper.cs" />
-    <Compile Include="Helper\SpyHelper.cs" />
-    <Compile Include="Model\OLD MODEL\CommandsUtility.cs" />
-    <Compile Include="Model\OLD MODEL\ConnectionUtility.cs" />
-    <Compile Include="Model\OLD MODEL\GeoIPCountry.cs" />
-    <Compile Include="Model\OLD MODEL\RattedConnectionUtility.cs" />
-    <Compile Include="Model\OLD MODEL\SpyUtility.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Connections.resx">
-      <DependentUpon>Connections.cs</DependentUpon>
+    <EmbeddedResource Include="Victim.resx">
+      <DependentUpon>Victim.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -89,6 +81,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
